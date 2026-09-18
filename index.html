@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO // BTS SIO SISR - AVANT-GARDE BRUTALISM</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --muted-color: #666666;
+            --border-color: #222222;
+            --accent-color: #ffffff;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-display: 'Arial Black', -apple-system, sans-serif;
+            --smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            line-height: 1.3;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVIGATION */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--muted-color);
+            text-decoration: none;
+            transition: var(--smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-color);
+        }
+
+        .sys-status {
+            color: var(--muted-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff66;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #00ff66;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* 2A. ACCUEIL & IDENTITÉ */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: flex-end;
+            margin-bottom: 60px;
+        }
+
+        .portrait-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            background: #111;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: var(--smooth);
+        }
+
+        .portrait-wrapper:hover {
+            border-color: var(--text-color);
+        }
+
+        .portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(140%);
+            mix-blend-mode: luminosity;
+            transition: var(--smooth);
+        }
+
+        .portrait-wrapper:hover .portrait-img {
+            transform: scale(1.04);
+            filter: grayscale(0%) contrast(110%);
+        }
+
+        .portrait-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: #000;
+            border: 1px solid var(--text-color);
+            padding: 4px 10px;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-title-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            letter-spacing: -2px;
+            line-height: 0.88;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .hero-degree {
+            font-size: 0.75rem;
+            color: var(--muted-color);
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-raw {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 28px;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            transition: var(--smooth);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-raw:hover {
+            background: var(--text-color);
+            color: #000000;
+            transform: translateY(-2px);
+        }
+
+        .btn-raw.filled {
+            background: var(--text-color);
+            color: #000000;
+        }
+
+        .btn-raw.filled:hover {
+            background: transparent;
+            color: var(--text-color);
+        }
+
+        /* BANDEAU DÉFILANT INFINI BALENCIAGA */
+        .ticker-tape {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            background: #ffffff;
+            color: #000000;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            overflow: hidden;
+            padding: 12px 0;
+            margin-bottom: 70px;
+            display: flex;
+            border-top: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .ticker-track {
+            display: flex;
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee 14s linear infinite;
+        }
+
+        .ticker-track span {
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* SECTIONS GENERALES */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-code {
+            font-size: 0.75rem;
+            color: var(--muted-color);
+        }
+
+        /* 2B. PROFIL & RECHERCHE DE STAGE */
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .profile-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #cccccc;
+            text-transform: none;
+        }
+
+        .stage-banner {
+            border: 1px solid var(--text-color);
+            padding: 24px;
+            background: #080808;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stage-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            padding: 4px 8px;
+            margin-bottom: 14px;
+            align-self: flex-start;
+        }
+
+        .stage-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .stage-desc {
+            font-size: 0.8rem;
+            color: #aaaaaa;
+            text-transform: none;
+            line-height: 1.5;
+        }
+
+        /* 2C. TIMELINE FORMATION */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border-color);
+            margin-left: 10px;
+            padding-left: 24px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 36px;
+            transition: var(--smooth);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -29px;
+            top: 4px;
+            width: 9px;
+            height: 9px;
+            background: #000;
+            border: 1px solid var(--text-color);
+            transition: var(--smooth);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: #fff;
+            box-shadow: 0 0 10px #ffffff;
+        }
+
+        .timeline-date {
+            font-size: 0.75rem;
+            color: var(--muted-color);
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-location {
+            font-size: 0.75rem;
+            color: #aaaaaa;
+            margin-bottom: 8px;
+        }
+
+        .timeline-details {
+            font-size: 0.8rem;
+            color: #888888;
+            text-transform: none;
+            line-height: 1.4;
+        }
+
+        /* 2D. COMPÉTENCES TECHNIQUES */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            background: #040404;
+            transition: var(--smooth);
+        }
+
+        .skill-card:hover {
+            border-color: var(--text-color);
+            transform: translateY(-3px);
+            background: #0a0a0a;
+        }
+
+        .skill-category {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            border: 1px solid #333;
+            padding: 6px 10px;
+            font-size: 0.7rem;
+            background: #000;
+            transition: var(--smooth);
+        }
+
+        .skill-card:hover .skill-tag {
+            border-color: #666;
+        }
+
+        .skill-tag:hover {
+            border-color: #fff !important;
+            background: #fff;
+            color: #000;
+        }
+
+        /* 2E. PROJETS & E5 (BLOC 1) */
+        .project-filter {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--muted-color);
+            padding: 8px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--smooth);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            border-color: var(--text-color);
+            color: var(--text-color);
+            background: #111;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            border: 1px solid var(--border-color);
+            background: #050505;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--smooth);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: var(--text-color);
+            transform: translateY(-4px);
+            background: #0d0d0d;
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 180px;
+            background: #111;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-thumb-placeholder {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: #333;
+            letter-spacing: 2px;
+            transition: var(--smooth);
+        }
+
+        .project-card:hover .project-thumb-placeholder {
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .project-type-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            border: 1px solid var(--text-color);
+            padding: 4px 8px;
+            font-size: 0.65rem;
+        }
+
+        .project-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: var(--muted-color);
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .project-desc {
+            font-size: 0.8rem;
+            color: #aaaaaa;
+            text-transform: none;
+            margin-bottom: 16px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .project-techs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .tech-pill {
+            font-size: 0.65rem;
+            background: #151515;
+            padding: 3px 6px;
+            border: 1px solid #222;
+        }
+
+        .project-action {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            transition: var(--smooth);
+        }
+
+        .project-card:hover .project-action {
+            letter-spacing: 1px;
+        }
+
+        /* MODALES DÉTAILS PROJETS E5 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #000000;
+            border: 1px solid var(--text-color);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 8px 14px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--smooth);
+        }
+
+        .modal-close:hover {
+            background: var(--text-color);
+            color: #000;
+        }
+
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            padding-right: 60px;
+        }
+
+        .modal-meta {
+            font-size: 0.75rem;
+            color: var(--muted-color);
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .modal-section-h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin: 20px 0 10px 0;
+            border-left: 3px solid var(--text-color);
+            padding-left: 10px;
+        }
+
+        .modal-text {
+            font-size: 0.85rem;
+            color: #cccccc;
+            text-transform: none;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .modal-competences {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .modal-competences li {
+            font-size: 0.8rem;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            background: #080808;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-competences li::before {
+            content: "✓";
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        /* 2F. ZONE DE CONTACT & FOOTER */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            background: #040404;
+            transition: var(--smooth);
+        }
+
+        .contact-item:hover {
+            border-color: var(--text-color);
+        }
+
+        .contact-label {
+            font-size: 0.7rem;
+            color: var(--muted-color);
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-color);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-value:hover {
+            text-decoration: underline;
+        }
+
+        .y2k-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .y2k-form input, .y2k-form textarea {
+            width: 100%;
+            background: #000000;
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            color: var(--text-color);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            border-radius: 0;
+            outline: none;
+            transition: var(--smooth);
+        }
+
+        .y2k-form input:focus, .y2k-form textarea:focus {
+            border-color: var(--text-color);
+            background: #080808;
+        }
+
+        .submit-btn {
+            background: var(--text-color);
+            color: #000000;
+            border: 1px solid var(--text-color);
+            padding: 18px;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 0;
+            transition: var(--smooth);
+        }
+
+        .submit-btn:hover {
+            background: #000000;
+            color: var(--text-color);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 30px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            color: var(--muted-color);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section, .profile-content, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR STATUS -->
+    <header class="header">
+        <div class="sys-status">
+            <span class="status-dot"></span>
+            PORTFOLIO BTS SIO SISR
+        </div>
+        <nav class="nav-links">
+            <a href="#profil">// PROFIL</a>
+            <a href="#parcours">// PARCOURS</a>
+            <a href="#competences">// SKILLS</a>
+            <a href="#projets">// PROJETS E5</a>
+            <a href="#contact">// CONTACT</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <!-- 2A. ACCUEIL ET IDENTITÉ NUMÉRIQUE -->
+        <section class="hero-section" id="accueil">
+            <div class="portrait-wrapper">
+                <img src="profilautre.png" alt="Photo de profil" class="portrait-img">
+                <div class="portrait-overlay">DISPONIBLE POUR EFFECTUER UN STAGE</div>
+            </div>
+            
+            <div class="hero-title-box">
+                <div class="hero-subtitle">Étudiante en informatique, systèmes et réseaux</div>
+                <h1 class="hero-name">Maëva<br>DEMOLON</h1>
+                <div class="hero-degree">1re Année BTS SIO - Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</div>
+                
+                <div class="cta-actions">
+                    <a href="Maeva_DEMOLON_CV.pdf" download="Maeva_DEMOLON_CV.pdf" target="_blank" class="btn-raw filled">TÉLÉCHARGER MON CV (PDF)</a>
+                    <a href="#contact" class="btn-raw">ME CONTACTER</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- BANDEAU DÉFILANT INFINI (STYLE BALENCIAGA) -->
+    <div class="ticker-tape">
+        <div class="ticker-track">
+            <span>SUPPORT ET MISE A DISPOSITION DE SERVICES INFORMATIQUES // ADMINISTRATION DES SYSTEMES ET DES RESEAUX // CYBERSECURITE // ALGORITHMIQUE //&nbsp;</span>
+            <span>SUPPORT ET MISE A DISPOSITION DE SERVICES INFORMATIQUES // ADMINISTRATION DES SYSTEMES ET DES RESEAUX // CYBERSECURITE // ALGORITHMIQUE //&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- 2B. PROFIL ET RECHERCHE DE STAGE -->
+        <section class="section" id="profil">
+            <div class="section-header">
+                <h2 class="section-title">01 // PROFIL & ORIENTATION</h2>
+                <span class="section-code">[IDENTITÉ & MOTIVATION]</span>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-text">
+                    <p style="margin-bottom: 15px;">Bienvenue sur mon portfolio !</p>
+                    <p style = "margin-bottom: 15px">Je suis actuellement en première année de BTS SIO (Services Informatiques aux Organisations) option SISR. Cette formation me permet d'acquérir des bases solides au niveau de nombreux domaines, le plus intéressant pour mon parcours étant l'administration de systèmes et de réseaux informatiques.</p>
+                    <p>Après l'obtention de mon diplôme, j'aspire à entreprendre la réalisation d'une prépa ATS afin de renforcer mes compétences et prétendre accéder à une école d'ingénieur spécialisée en cybersécurité. Je vise ensuite un poste de testeur en sécurité informatique (pentester).</p>
+                </div>
+
+                <div class="stage-banner">
+                    <div>
+                        <span class="stage-badge">RECHERCHE DE STAGE</span>
+                        <h3 class="stage-title">STAGE BTS SIO SISR (5 SEMAINES)</h3>
+                        <p class="stage-desc">Recherche active d'un stage conventionné d'une durée de 5 semaines, à réaliser entre <strong>mai et août 2027</strong>, préferentiellement dans le domaine de l'administration de systèmes et réseaux.</p>
+                    </div>
+                    <a href="#contact" class="btn-raw" style="margin-top: 20px; align-self: flex-start; padding: 10px 18px; font-size: 0.7rem;">ME CONTACTER</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2C. PARCOURS DE FORMATION -->
+        <section class="section" id="parcours">
+            <div class="section-header">
+                <h2 class="section-title">02 // PARCOURS DE FORMATION</h2>
+                <span class="section-code">[TIMELINE ACADÉMIQUE]</span>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Septembre 2026 - PRÉSENT (EN COURS)</div>
+                    <h3 class="timeline-title">BTS SIO (SERVICES INFORMATIQUES AUX ORGANISATIONS)</h3>
+                    <div class="timeline-location">Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux) — CNED, Chasseneuil-Du-Poitou, VIENNE (86)</div>
+                    <div class="timeline-details">
+                        Option permettant une spécialisation au niveau de l'administration des systèmes et réseaux, s'articulant autour de la conception, de l'installation et de l'administration d'une infrastructure réseau tout en consolidant la résolution d'incidents ainsi que la supervision d'une solution d'infrastructure réseau.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Septembre 2024 - Juillet 2026</div>
+                    <h3 class="timeline-title">Licence informatique</h3>
+                    <div class="timeline-location">Université de Caen-Normandie, Caen, NORMANDIE (14)</div>
+                    <div class="timeline-details">L2 de licence informatique (la première pour renforcer les acquis et la seconde correspondant à la véritable L1).</div>
+                    </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Juillet 2021</div>
+                    <h3 class="timeline-title">BACCALAURÉAT GÉNÉRAL (SVT & PHYSIQUE-CHIMIE)</h3>
+                    <div class="timeline-location">Lycée Irène et Frédéric Joliot-Curie, Sète, HERAULT (34) — Mention Bien et Europénne</div>
+                    <div class="timeline-details"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2D. COMPÉTENCES TECHNIQUES -->
+        <section class="section" id="competences">
+            <div class="section-header">
+                <h2 class="section-title">03 // COMPÉTENCES TECHNIQUES</h2>
+                <span class="section-code">[OPTION SISR]</span>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-category">
+                        <span>CONCEVOIR UNE SOLUTION D'INFRASTRUCTURE RESEAU</span>
+                    </div>
+                    <ul class="skill-list">
+                        <li class="skill-tag">Adressage IP</li>
+                        <li class="skill-tag">Packet Tracer</li>
+                        <li class="skill-tag">Wireshark</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">
+                        <span>DEPLOIEMENT DU MATERIEL ET DE L'INFRASTRUCTURE AU SEIN D'UNE ENTREPRISE</span>
+                    </div>
+                    <ul class="skill-list">
+                        <li class="skill-tag">Service DHCP</li>
+                        <li class="skill-tag">VLANs</li>
+                        <li class="skill-tag">Accès SSH</li>
+                        <li class="skill-tag">SSID / WPA2</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">
+                        <span>PROTOTYPAGE VIRTUEL D'UNE SALLE DE FORMATION</span>
+                    </div>
+                    <ul class="skill-list">
+                        <li class="skill-tag">VirtualBox</li>
+                        <li class="skill-tag">Active Directory</li>
+                        <li class="skill-tag">Permissions NTFS</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-category">
+                        <span>REORGANISATION INFRATRUCTURE SYSTEME ET RESEAU</span>
+                    </div>
+                    <ul class="skill-list">
+                        <li class="skill-tag">AGDLP</li>
+                        <li class="skill-tag">Création / Modification / Supression / Désactivation des comptes utilisateurs AD</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2E. RÉALISATIONS PROFESSIONNELLES (E5 / BLOC 1) -->
+        <section class="section" id="projets">
+            <div class="section-header">
+                <h2 class="section-title">04 // RÉALISATIONS PROFESSIONNELLES</h2>
+                <span class="section-code">[PORTFOLIO E5 - BLOC 1]</span>
+            </div>
+
+            <div class="project-filter">
+                <button class="filter-btn active" onclick="filterProjects('all')">TOUT</button>
+                <button class="filter-btn" onclick="filterProjects('scolaire')">SCOLAIRE / ATELIERS</button>
+                <button class="filter-btn" onclick="filterProjects('pro')">STAGES / PROS</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- PROJET 1 : SCOLAIRE -->
+                <div class="project-card" data-category="scolaire" onclick="openModal('modal1')">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder">SOON</div>
+                        <span class="project-type-tag">STAGE</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>STAGE DE PROFESSIONNALISATION</span>
+                        </div>
+                        <h3 class="project-title">...</h3>
+                        <p class="project-desc">...</p>
+                        <div class="project-techs">
+                            <span class="tech-pill">...</span>
+                            <span class="tech-pill">...</span>
+                        </div>
+                        <div class="project-action">
+                            <span>VOIR LA FICHE COMPLÈTE E5</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJET 2 : ATELIER 2 -->
+                <div class="project-card" data-category="scolaire" onclick="openModal('modal2')">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder">ATELIER 1</div>
+                        <span class="project-type-tag">SCOLAIRE</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>...</span>
+                            <span>ATELIER DE PROFESSIONNALISATION</span>
+                        </div>
+                        <h3 class="project-title">...</h3>
+                        <p class="project-desc">...</p>
+                        <div class="project-techs">
+                            <span class="tech-pill">...</span>
+                            <span class="tech-pill">...</span>
+                            <span class="tech-pill">...</span>
+                            <span class="tech-pill">...</span>
+                        </div>
+                        <div class="project-action">
+                            <span>VOIR LA FICHE COMPLÈTE E5</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJET 3 : STAGE -->
+                <div class="project-card" data-category="pro" onclick="openModal('modal3')">
+                    <div class="project-thumb">
+                        <div class="project-thumb-placeholder">ATELIER 2</div>
+                        <span class="project-type-tag">SCOLAIRE</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span>...</span>
+                            <span>...</span>
+                        </div>
+                        <h3 class="project-title">...</h3>
+                        <p class="project-desc">...</p>
+                        <div class="project-techs">
+                            <span class="tech-pill">...</span>
+                            <span class="tech-pill">...</span>
+                            <span class="tech-pill">...</span>
+                            <span class="tech-pill">...</span>
+                        </div>
+                        <div class="project-action">
+                            <span>VOIR LA FICHE COMPLÈTE E5</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2F. ZONE DE CONTACT -->
+        <section class="section" id="contact">
+            <div class="section-header">
+                <h2 class="section-title">05 // ZONE DE CONTACT</h2>
+                <span class="section-code">[COMMUNICATION & CANAUX]</span>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-list">
+                    <div class="contact-item">
+                        <div class="contact-label">LOCALISATION</div>
+                        <div class="contact-value">CAEN / NORMANDIE, FRANCE</div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">TÉLÉPHONE MOBILE</div>
+                        <a href="tel:+33612345678" class="contact-value">à mettre</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">ADRESSE EMAIL PROFESSIONNELLE</div>
+                        <a href="mailto:alexis.dupont.pro@gmail.com" class="contact-value">maeva.demolon@proton.me</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">PROFIL LINKEDIN</div>
+                        <a href="https://www.linkedin.com/in/maëva-demolon-9012b5402/" target="_blank" class="contact-value">https://www.linkedin.com/in/ma%C3%ABva-demolon-9012b5402/</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-label">RÉPERTOIRE GITHUB</div>
+                        <a href="https://github.com/mdemolon" target="_blank" class="contact-value">github.com/maeva-demolon-dev</a>
+                    </div>
+                </div>
+
+                <form class="y2k-form" onsubmit="event.preventDefault(); alert('Message envoyé avec succès !');">
+                    <input type="text" placeholder="VOTRE NOM / ENTREPRISE" required>
+                    <input type="email" placeholder="VOTRE EMAIL PROFESSIONNEL" required>
+                    <input type="text" placeholder="OBJET DU MESSAGE" required>
+                    <textarea rows="5" placeholder="VOTRE MESSAGE..." required></textarea>
+                    <button type="submit" class="submit-btn">ENVOYER LE MESSAGE →</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MODALES POUR INFOS COMPLÉMENTAIRES ÉPREUVE E5 -->
+    <div class="modal-overlay" id="modal1">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal1')">[ FERMER X ]</button>
+            <h2 class="modal-title">PROJET DE STAGE</h2>
+            <div class="modal-meta">CADRE : ATELIER DE SPÉCIALITÉ SISR | DATE : ???</div>
+
+            <div class="modal-section-h3">DESCRIPTION DÉTAILLÉE DU PROJET</div>
+            <p class="modal-text">stage</p>
+            
+            <div class="modal-section-h3">COMPÉTENCES COUVERTES DU BLOC 1</div>
+            <ul class="modal-competences">
+                <li>B1.1</li>
+                <li>B1.2</li>
+                <li>B1.3</li>
+                <li>B1.4</li>
+                <li>B1.5</li>
+                <li>B1.6</li>
+            </ul>
+
+            <div class="modal-links">
+                <a href="https://github.com/alexis-dupont-dev/pfsense-dmz-lab" target="_blank" class="btn-raw">DÉPÔT GITHUB</a>
+                <a href="docs/documentation-pfsense.pdf" target="_blank" class="btn-raw filled">DOCUMENTATION TECHNIQUE (PDF)</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal2">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal2')">[ FERMER X ]</button>
+            <h2 class="modal-title">MIGRATION ET GPO WINDOWS SERVER 2022 & GLPI</h2>
+            <div class="modal-meta">CADRE : ATELIER DE PROFESSIONNALISATION 2 | DATE : JANVIER 2027</div>
+
+            <div class="modal-section-h3">DESCRIPTION DÉTAILLÉE DU PROJET</div>
+            <p class="modal-text">...</p>
+            
+            <div class="modal-section-h3">COMPÉTENCES COUVERTES DU BLOC 1</div>
+            <ul class="modal-competences">
+                <li>B1.1</li>
+                <li>B1.2</li>
+                <li>B1.3</li>
+            </ul>
+
+            <div class="modal-links">
+                <a href="https://github.com/alexis-dupont-dev/ad-gpo-glpi" target="_blank" class="btn-raw">DÉPÔT GITHUB</a>
+                <a href="docs/procedure-ad-gpo.pdf" target="_blank" class="btn-raw filled">FICHE DESCRIPTIVE E5 (PDF)</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal3">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal3')">[ FERMER X ]</button>
+            <h2 class="modal-title">AUDIT ET HARDENING DES SERVEURS & DEPLOIEMENT ANSIBLE</h2>
+            <div class="modal-meta">CADRE : STAGE EN ENTREPRISE (PRÉVISIONNEL) | DATE : MAI 2027</div>
+
+            <div class="modal-section-h3">DESCRIPTION DÉTAILLÉE DU PROJET</div>
+            <p class="modal-text">...</p>
+            
+            <div class="modal-section-h3">COMPÉTENCES COUVERTES DU BLOC 1</div>
+            <ul class="modal-competences">
+                <li>B1.1</li>
+                <li>B1.2</li>
+                <li>B1.3</li>
+            </ul>
+
+            <div class="modal-links">
+                <a href="https://github.com/alexis-dupont-dev/ansible-hardening" target="_blank" class="btn-raw">DÉPÔT GITHUB</a>
+                <a href="docs/rapport-stage.pdf" target="_blank" class="btn-raw filled">RAPPORT DE STAGE (PDF)</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>© 2026-2027 ALEXIS DUPONT // PORTFOLIO BTS SIO SISR</div>
+        <div>CONFORME AU RÉFÉRENTIEL OFFICIEL E5 / BLOC 1</div>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
